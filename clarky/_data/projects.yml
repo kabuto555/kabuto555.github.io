@@ -1,0 +1,4 @@
+- name: "Dragon Court: Revived (2023)"
+  details: I reverse engineered and maintained a custom server to run an abandonware online browser fantasy RPG. I ended up decompiling and deobfuscating the original game binary to add quality of life and balance changes. I also designed and implemented 2 expansions with new content and features. (I co-designed the 2nd expansion.)
+- name: Nicklodeon Card Clash (2024)
+  details: A mobile CCG game. I built the card ability and status effect systems, and the battle animation framework. I also architected and build an in-game event custom abilities system to allow designers to customize event specific battle abilities.

@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["../../_sass/main.scss"],"names":[],"mappings":"AAAA;EACC;;;AAED;EACC","sourcesContent":[".current {\n\tcolor: green;\n}\n.nav-other {\n\tcolor: blue;\n}"],"file":"styles.css"}
