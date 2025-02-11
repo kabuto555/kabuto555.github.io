@@ -15,7 +15,7 @@ _I'm a software and game developer with a passion for building fun and well craf
 # Recent Projects
 {% for project in site.data.projects limit:2 %}
 - ### {{ project.name }}
-{% if project.links %}[{{ project.links }}]<br>{{ project.details }}<br><br>{% else %}{{ project.details }}<br><br>{% endif %}
+{% if project.links %}[ {{ project.links }} ]<br>{{ project.details }}<br><br>{% else %}{{ project.details }}<br><br>{% endif %}
 `Tech: {{ project.tech }}`
 {% endfor %}
 
