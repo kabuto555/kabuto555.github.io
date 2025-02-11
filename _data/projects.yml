@@ -43,7 +43,7 @@
   tech: Unity, C#, Scala
 - name: "Draw Something 2<br>(Zynga)"
   image: ds2.webp
-  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me and the result was an amazing Instagram-like experience for amateur and professional-level touch screen artwork. I got to work alongside lots of brilliant folks from the acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild internal drama where the head of the OMGPop crew was let go right before we released the game. And then later when Zynga eventually closed down the OMGPop studio in New York, some of us were flown over to help with knowledge transfers. They treated us to expensive New York meals and bar drinks, and then expense it on Zynga headquarters."
+  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me and the result was an amazing Instagram-like experience for amateur and professional-level touch screen artwork. I got to work alongside lots of brilliant folks from the acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild internal drama where the head of the OMGPop crew was let go the night before we released the game. And then later when Zynga eventually closed down the OMGPop studio in New York, some of us were flown over to help with knowledge transfers. They treated us to expensive New York meals and bar drinks, and then expense it on Zynga headquarters."
   tech: Native Android, Native iOS, Cocos2d-x, C++
 - name: "Dream Zoo<br>(Zynga)"
   image: dz.jpg
