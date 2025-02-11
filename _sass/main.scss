@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Press+Start+2P&display=swap');
 
 :root {
-	--accent-color: #289bff;
-	--alt-color: #ffd700;
+  --accent-color: #289bff;
+  --alt-color: #a3e635;
+  --alt2-color: #2c600c;
 }
 
 /* --- Navigation --- */
@@ -12,11 +13,15 @@
   padding: 15px 0;
   text-align: center;
   font-family: "Press Start 2P", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav a {
   text-decoration: none;
-  color: var(--accent-color); /* Gold text */
+  color: var(--accent-color);
   padding: 10px 20px;
   margin: 5px;
   border-radius: 10px;
@@ -27,8 +32,18 @@
 
 .nav a:hover {
   background: var(--accent-color);
-  color: #222;
+  color: #fff;
   box-shadow: 2px 2px 4px #fff;
+}
+
+.nav .nav-current {
+  background: var(--alt-color);
+  color: var(--alt2-color);
+  box-shadow: 2px 2px 0px var(--alt2-color);
+}
+
+.nav .nav-current:hover {
+  background: var(--alt-color);
 }
 
 
