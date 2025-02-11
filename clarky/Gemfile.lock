@@ -326,7 +326,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-theme-primer
+  minima
 
 BUNDLED WITH
    2.6.3
