@@ -1,9 +1,134 @@
-.current {
-  color: green;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Press+Start+2P&display=swap");
+:root {
+  --accent-color: #289bff;
+  --alt-color: #ffd700;
 }
 
-.nav-other {
-  color: blue;
+/* --- Navigation --- */
+.nav {
+  background: linear-gradient(to bottom, #666, #333);
+  border-bottom: 4px solid var(--accent-color);
+  padding: 15px 0;
+  text-align: center;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--accent-color); /* Gold text */
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  background: #222;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 0px var(--accent-color);
+}
+
+.nav a:hover {
+  background: var(--accent-color);
+  color: #222;
+  box-shadow: 2px 2px 4px #fff;
+}
+
+/* --- Body & Layout --- */
+body {
+  background: #222;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Page Container --- */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #333;
+  border: 4px solid var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+}
+
+/* --- Headings --- */
+h1, h2, h3 {
+  font-family: "Press Start 2P", sans-serif;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 0px #000;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+/* --- Paragraphs & Text --- */
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+/* --- Buttons --- */
+.button {
+  display: inline-block;
+  background: #222;
+  color: var(--accent-color);
+  padding: 10px 15px;
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #000;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: var(--accent-color);
+  color: #222;
+  box-shadow: 3px 3px 0px #fff;
+}
+
+/* --- Lists --- */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #333;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #000;
+}
+
+/* --- Code Blocks --- */
+code {
+  background: #000;
+  color: var(--accent-color);
+  padding: 5px;
+  border-radius: 3px;
+  font-family: monospace;
 }
 
 /*# sourceMappingURL=styles.css.map */
