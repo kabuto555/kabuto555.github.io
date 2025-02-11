@@ -13,7 +13,7 @@
   image: lar.png
   links: "[App Store](https://apps.apple.com/us/app/little-alchemist-remastered/id1605187898) |
           [Google Play](https://play.google.com/store/apps/details?id=io.monumental.littlealchemist.google&hl=en-US)"
-  details: "A mobile dueling CCG game built. There were lots of whimsical and cheeky pop culture reference where combining any two cards produced something unique to attack your opponent with. I supported the game in maintainance mode and also integrated an in-house authentication system for mobile and Kongregate.com login flows. (The planned Kongregate release was sadly cancelled.)"
+  details: "Another mobile dueling CCG game. There were lots of whimsical and cheeky pop culture reference where combining any two cards produced something unique to attack your opponent with. I supported the game in maintainance mode and also integrated an in-house authentication system for mobile and Kongregate.com login flows. (The planned Kongregate release was sadly cancelled.)"
   tech: Unity, C#, WebGL, PHP, MySQL, Docker, Retool
 - name: "Mythgard<br>(Monumental, 2021)"
   image: mg.jpg
