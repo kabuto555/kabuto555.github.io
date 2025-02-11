@@ -1,8 +1,10 @@
 - name: 🏠 Home
   link: /
-- name: 🎮 Projects
+- name: 👾 Projects
   link: /pages/projects.html
 - name: 🍜 About
   link: /pages/about.html
-- name: 📩 Contact
+- name: 💻 Resume
+  link: /pages/resume.html
+- name: 💬 Contact
   link: /pages/contact.html

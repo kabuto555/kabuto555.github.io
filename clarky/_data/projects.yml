@@ -1,4 +1,35 @@
-- name: Nicklodeon Card Clash (2024)
-  details: A mobile CCG game. I built the card ability and status effect systems, and the battle animation framework. I also architected and build an in-game event custom abilities system to allow designers to customize event specific battle abilities.
-- name: "Dragon Court: Revived (2023)"
-  details: I reverse engineered and maintained a custom server to run an abandonware online browser fantasy RPG. I ended up decompiling and deobfuscating the original game binary to add quality of life and balance changes. I also designed and implemented 2 expansions with new content and features. (I had a co-designer on the 2nd expansion.)
+- name: "Nicklodeon Card Clash<br>(Monumental, 2024)"
+  details: "A mobile dueling CCG game. It featured playing hand combos with loads of Nicklodeon characters! I built the card ability and status effect systems, and the battle animation framework. I also architected and build an in-game event custom abilities system to allow designers to customize event specific battle abilities. I also integrated an in-house authentication system that I worked on, for mobile and Kongregate.com login flows. (Unfortunately, we never ended up releasing the game on Kongregate.)"
+  tech: Unity, C#, WebGL, PHP, MySQL, Docker, Retool
+  image: ncc.jpg
+  links: "[App Store](https://apps.apple.com/ca/app/nickelodeon-card-clash/id6503707285) |
+          [Google Play](https://play.google.com/store/apps/details?id=io.monumental.cardclash&hl=en-US)"
+- name: "Dragon Court: Revived<br>(Penguin Chilling Games, 2023)"
+  details: "This is a personal project where I reverse engineered and maintained a custom server to run an abandonware online browser fantasy RPG. It was an old school RPG with lengthy encounter descriptions and multiple actions based on your character, and I was hooked playing this on school and library computers. I ended up decompiling and deobfuscating the original Java Applet game binary to add quality of life and balance changes. I also designed and implemented 2 expansions with new content and features. (I had a co-designer on the 2nd expansion, and an artist for the 2 expansions.) Some fun changes: Pilfering/returning loot of other dead players, PvP encounters, self-found mode, hardcore mode, and pulling out the game data (ie: monsters, items, weapons, etc) outside the game client so it can be updated without a new client release."
+  tech: Java, AWT, HTML/CSS, JavaScript, Node.js, MySQL, Docker
+  image: dcr.png
+  links: "[Play Online](https://dragoncourt.penguinchilling.com/)"
+- name: "Little Alchemist: Remastered<br>(Monumental, 2022)"
+  details: "A mobile dueling CCG game built. There were lots of whimsical and cheeky pop culture reference where combining any two cards produced something unique to attack your opponent with. I supported the game in maintainance mode and also integrated an in-house authentication system for mobile and Kongregate.com login flows. (The planned Kongregate release was sadly cancelled.)"
+  tech: Unity, C#, WebGL, PHP, MySQL, Docker, Retool
+- name: "Mythgard<br>(Monumental, 2021)"
+  details: "Our studio bought this mobile/desktop/web game from Rhino Games, and our team took over general maintenance mode support. I worked on modernizing bits and pieces of the analytics and diagnostics used in the game. We created a refreshed battle interface, but product leadership decided not to ship the work and we pivoted to another game."
+  tech: Unity, C#
+- name: "Storm Wars (Remaster)<br>(Monumental, 2021)"
+  details: "This was a remaster of an older mobile/web game and I implemented a localization framework, and the battle sequencing and animations framework, in collaboration with our animator. I also rebuilt various screens with our refreshed UI/UX redesigns."
+  tech: Unity, C#, Python, Docker
+- name: "Boggle with Friends<br>(Zynga)"
+  details: "Feels like I've been working on this mobile game forever when I left Zynga. It's gone through at least 2 rebrands, from Scramble with Friends, to Word Streak with Friends, and finally to Boggle with Friends due to some legal branding shenanigans. I've worked on a numerous experimental growth and monetization features at the behest of a product manager. I did enjoy working some more interesting and less clinical features like sticker taunts, tournaments and the many customizable game modes."
+  tech: Native Android, Java, Kotlin, AndEngine, Native iOS, Objective-C, Swift, Cocos2d-objc
+- name: "Chess with Friends<br>(Zynga)"
+  details: "Another mobile game I've spent a lot of time on, in particular numerous forgettable experimental growth and monetization features. Number go up, product brain happy (business as usual?). It's been a long time since I worked on this game, but I fondly remember getting Universal Chess Interface (UCI) protocol implemented into the legacy game code to run UCI-compatible binaries for chess AI bots as processes and communicate with CLI like input/output."
+  tech: Native Android, Java, Native iOS, Objective-C, C/C++
+- name: "Mafia Wars (Remake)<br>(Zynga)"
+  details: "This was one of those many \"Game of War\" clones for mobile. I remember the design director constantly presenting that we wanted to build an experience and not a game. The idea was to simulate being some mighty crime boss by spending real money, including during internal playtests. I was too cheap to make an impact in our playtests but others went wild on spending! I worked on the social friend/alliance/chat systems."
+  tech: Unity, C#, Scala
+- name: "Draw Something 2<br>(Zynga)"
+  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me. I got to work alongside lost of brilliant folks from acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild drama where the head of the OMGPop crew was let go right before we released the game for things said. And then later when Zynga eventually closed down the OMGPop studio in New York, some Toronto employees including myself were flown over to help with knowledge transfers. It was a good time to have expensive New York meals and long nights drinking and to stick the bill on Uncle Zynga."
+  tech: Native Android, Native iOS, Cocos2d-x, C++
+- name: "Dream Zoo<br>(Zynga)"
+  details: "I worked on a flurry of various game features. Zynga went hard on this one, I believe they actually hired the creators of Coco2d and AndEngine to do custom engine work just so this game (and other similarly styled games) could run on low spec devices like Android 2.0. I remember working with the AndEngine creator, a very nice fellow, I'm fuzzy if the Cocos2d guy ever worked on DreamZoo, but he was at Zynga for a while."
+  tech: Native Android, Java, AndEngine

@@ -114,7 +114,7 @@ ul {
 }
 
 li {
-  background: #333;
+  background: linear-gradient(to bottom, #333, #111);
   padding: 10px;
   margin: 10px 0;
   border: 2px solid var(--accent-color);
