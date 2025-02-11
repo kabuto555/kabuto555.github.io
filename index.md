@@ -6,6 +6,8 @@ title: Clarky Lee
 
 ## 🐧 Software and Game Developer 🐻
 
+<img src="/assets/images/clarky.jpg" width="350" class="center">
+
 <p align=center>🎮 Crafting joyful player experiences with code and design. 🕹️</p>
 
 _I'm a software and game developer with a passion for building fun and well crafted experiences. I specialize in Unity/C# and Godot games on mobile, desktop and WebGL, but also have experience in general web development and backend systems. Whether it's RPG mechanics or card battle systems, I enjoy solving interesting design problems and crafting responsive gameplay._
