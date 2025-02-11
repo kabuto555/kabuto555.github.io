@@ -3,7 +3,7 @@
   links: "[App Store](https://apps.apple.com/ca/app/nickelodeon-card-clash/id6503707285) |
           [Google Play](https://play.google.com/store/apps/details?id=io.monumental.cardclash&hl=en-US)"
   details: "A mobile dueling CCG game. It featured playing hand combos with loads of Nicklodeon characters! I built the card ability and status effect systems, and the battle animation framework. I also architected and build an in-game event custom abilities system to allow designers to customize event specific battle abilities. I also integrated an in-house authentication system that I worked on, for mobile and Kongregate.com login flows. (Unfortunately, we never ended up releasing the game on Kongregate.)"
-  tech: Unity, C#, WebGL, PHP, MySQL, Docker, Retool
+  tech: Unity, C#, WebGL, PHP, PostgreSQL, Docker, Retool
 - name: "Dragon Court: Revived<br>(Penguin Chilling Games, 2023)"
   image: dcr.png
   links: "[Play Online](https://dragoncourt.penguinchilling.com/)"
@@ -22,7 +22,7 @@
           [Google Play](https://play.google.com/store/apps/details?id=com.rhinogamesinc.mythgard) |
           [Play Online](https://www.mythgardgame.com/Play)"
   details: "Our studio bought this mobile/desktop/web game from Rhino Games, and our team took over general maintenance mode support. I worked on modernizing bits and pieces of the analytics and diagnostics used in the game. We created a refreshed battle interface, but product leadership decided not to ship the work and we pivoted to another game."
-  tech: Unity, C#
+  tech: Unity, C#, PostgreSQL
 - name: "Storm Wars (Remaster)<br>(Monumental, 2021)"
   image: swr.png
   details: "This was a remaster of an older mobile/web game and I implemented a localization framework, and the battle sequencing and animations framework, in collaboration with our animator. I also rebuilt various screens with our refreshed UI/UX redesigns. The remaster was ultimately put on back burner to pivot the team to other projects."
