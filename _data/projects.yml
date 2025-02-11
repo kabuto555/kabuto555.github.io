@@ -31,7 +31,7 @@
   image: bwf.jpg
   links: "[App Store](https://apps.apple.com/us/app/boggle-with-friends-word-game/id1197041040) |
           [Google Play](https://play.google.com/store/apps/details?id=com.zynga.boggle&hl=en-US)"
-  details: "Feels like I've been working on this mobile game forever while I was at Zynga. It's gone through at least 2 rebrands, from Scramble with Friends, to Word Streak with Friends, and finally to Boggle with Friends due to some legal branding shenanigans. I've worked on a numerous experimental growth and monetization features at the behest of product managers. I did enjoy working some interesting and player-focused features like sticker taunts, tournaments and the many customizable game modes."
+  details: "Feels like I've been working on this mobile game forever while I was at Zynga. It's gone through at least 2 rebrands, from Scramble with Friends, to Word Streak with Friends, and finally to Boggle with Friends due to some legal branding shenanigans. I've worked on a numerous experimental growth and monetization features drafted by product managers. I did enjoy working some interesting and player-focused features like sticker taunts, tournaments and the many customizable game modes."
   tech: Native Android, Java, Kotlin, AndEngine, Native iOS, Objective-C, Swift, Cocos2d-objc
 - name: "Chess with Friends<br>(Zynga)"
   image: cwf.png
@@ -39,13 +39,13 @@
   tech: Native Android, Java, Native iOS, Objective-C, C/C++
 - name: "Mafia Wars (Reboot)<br>(Zynga)"
   image: mwr.jpg
-  details: "This was one of those many \"Game of War\" clones for mobile. I remember the design director constantly presenting that we wanted to build an experience and not a game. The idea was to simulate being some mighty crime boss by spending real money, including during internal playtests. I was too cheap to make an impact in our playtests but others went wild on spending! I worked on the social friend/alliance/chat systems."
+  details: "This was one of those many \"Game of War\" clones for mobile. I developed the client portion for managing friends and alliances, and the chat system for 1:1, alliance, and global scopes. I remember the design director constantly presenting that we wanted to build an experience and not a game. The idea was to simulate role-playing as some mighty crime boss by spending real money. . Interesting philosophy for the project."
   tech: Unity, C#, Scala
 - name: "Draw Something 2<br>(Zynga)"
   image: ds2.webp
-  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me and the result was an amazing Instagram-like experience for amateur and professional-level touch screen artwork. I got to work alongside lots of brilliant folks from the acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild internal drama where the head of the OMGPop crew was let go the night before we released the game. And then later when Zynga eventually closed down the OMGPop studio in New York, some of us were flown over to help with knowledge transfers. They treated us to expensive New York meals and bar drinks, and then expense it on Zynga headquarters."
+  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me and the result was an amazing Instagram-like experience for amateur and professional-level touch screen artwork. I got to work alongside lots of brilliant folks from the acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild internal drama where the head of the OMGPop crew was let go the night before we released the game. And then later when Zynga eventually closed down the OMGPop studio in New York, some of us were flown over to help with knowledge transfers. They treated us to expensive New York meals and bar drinks, and then expensed it on Zynga headquarters."
   tech: Native Android, Native iOS, Cocos2d-x, C++
 - name: "Dream Zoo<br>(Zynga)"
   image: dz.jpg
-  details: "I worked on a flurry of various game features. Zynga went hard on this one, I believe they actually hired the creators of Coco2d and AndEngine to do custom engine work just so this game (and other similarly styled games) could run on low spec devices like Android 2.0. I remember working with the AndEngine creator, a very nice fellow. I'm fuzzy if the Cocos2d guy ever worked on DreamZoo, but he was at Zynga for a while."
+  details: "I worked on a flurry of various game features. Mostly on the Android client side getting the game UIs to work on a variety of resolution and low end hardware. (Remember when Android 2.0 was a thing?)"
   tech: Native Android, Java, AndEngine
