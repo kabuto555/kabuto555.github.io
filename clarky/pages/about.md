@@ -14,6 +14,8 @@ For me, software and game development can seem like puzzles where creativity mee
 
 Outside of the games world, I enjoy training in traditional martial arts, and have trained in a variety of them (not to say that I am equally good at all of them!) Over the years I've tried judo, monkey kung-fu, historical European martial arts, kendo, karate and taekwondo. I want to try sumo wrestling one day!
 
+I also really love noodles. Ramen, spaghetti, vermicelli bowls, udon, Taiwanese beef noodle soup, zarusoba, crispy chow mein, pad thai, dan dan noodles, angel hair... I'll devour them all!
+
 I'm always excited to chat about game design and development, and any opportunities! Feel free to check my [projects](/pages/projects.html) and [contact me](/pages/contact.html) anytime!
 
 If you would like to work with me in any official capacity, you can download and check out my [resume](/assets/Clarky_Lee_Resume.pdf)!
