@@ -37,7 +37,7 @@
   image: cwf.png
   details: "Another mobile game I've spent a lot of time on, in particular numerous forgettable experimental growth and monetization features. Number go up, product team happy (business as usual? 🗿) It's been a long time since I worked on this game, but I fondly remember getting Universal Chess Interface (UCI) protocol implemented into the legacy game code to run UCI-compatible binaries for chess AI bots as processes and communicate with CLI like input/output."
   tech: Native Android, Java, Native iOS, Objective-C, C/C++
-- name: "Mafia Wars (Remake)<br>(Zynga)"
+- name: "Mafia Wars (Reboot)<br>(Zynga)"
   image: mwr.jpg
   details: "This was one of those many \"Game of War\" clones for mobile. I remember the design director constantly presenting that we wanted to build an experience and not a game. The idea was to simulate being some mighty crime boss by spending real money, including during internal playtests. I was too cheap to make an impact in our playtests but others went wild on spending! I worked on the social friend/alliance/chat systems."
   tech: Unity, C#, Scala
