@@ -31,7 +31,7 @@
   image: bwf.jpg
   links: "[App Store](https://apps.apple.com/us/app/boggle-with-friends-word-game/id1197041040) |
           [Google Play](https://play.google.com/store/apps/details?id=com.zynga.boggle&hl=en-US)"
-  details: "Feels like I've been working on this mobile game forever while I was at Zynga. It's gone through at least 2 rebrands, from Scramble with Friends, to Word Streak with Friends, and finally to Boggle with Friends due to some legal branding shenanigans. I've worked on a numerous experimental growth and monetization features drafted by product managers. I did enjoy working some interesting and player-focused features like sticker taunts, tournaments and the many customizable game modes."
+  details: "Feels like I've been working on this mobile game forever while I was at Zynga. It's gone through at least 2 rebrands due to legal branding shenanigans, from Scramble with Friends, to Word Streak with Friends, to Boggle with Friends. I've worked on refreshing the game UI/UX to the Boggle branding and many other numerous experimental growth and monetization features. I did enjoy working some interesting and player-focused features like sticker taunts, tournaments and the many customizable game modes."
   tech: Native Android, Java, Kotlin, AndEngine, Native iOS, Objective-C, Swift, Cocos2d-objc
 - name: "Chess with Friends<br>(Zynga)"
   image: cwf.png
@@ -43,7 +43,7 @@
   tech: Unity, C#, Scala
 - name: "Draw Something 2<br>(Zynga)"
   image: ds2.webp
-  details: "I fondly remember the fever dream development of this game, and it was a blast. I worked on a lot of the Instagram-like social feed related features such as sharing, likes and comments."
+  details: "I fondly remember the fever dream development of this game, and it was a blast. I worked on a lot of the Instagram-like social feed related features such as profiles, follow lists, sharing, likes and comments."
   tech: Native Android, Native iOS, Cocos2d-x, C++
 - name: "Dream Zoo<br>(Zynga)"
   image: dz.jpg
