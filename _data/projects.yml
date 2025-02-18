@@ -21,7 +21,7 @@
           [App Store](https://apps.apple.com/us/app/mythgard/id1404458505) |
           [Google Play](https://play.google.com/store/apps/details?id=com.rhinogamesinc.mythgard) |
           [Play Online](https://www.mythgardgame.com/Play)"
-  details: "Our studio bought this mobile/desktop/web game from Rhino Games, and our team took over general maintenance mode support. I worked on modernizing bits and pieces of the analytics and diagnostics used in the game. We created a refreshed battle interface, but product leadership decided not to ship the work and we pivoted to another game."
+  details: "Our studio bought this mobile/desktop/web game from Rhino Games, and our team took over general maintenance mode support. I worked on modernizing bits and pieces of the analytics and diagnostics used in the game. The team and I created a refreshed battle UI/UX, but product leadership decided not to ship the work and we pivoted to another game."
   tech: Unity, C#, PostgreSQL
 - name: "Storm Wars (Remaster)<br>(Monumental, 2021)"
   image: swr.png
@@ -39,11 +39,11 @@
   tech: Native Android, Java, Native iOS, Objective-C, C/C++
 - name: "Mafia Wars (Reboot)<br>(Zynga)"
   image: mwr.jpg
-  details: "This was one of those many \"Game of War\" clones for mobile. I developed the client portion for managing friends and alliances, and the chat system for 1:1, alliance, and global scopes. I remember the design director constantly presenting that we wanted to build an experience and not a game. The idea was to simulate role-playing as some mighty crime boss by spending real money. . Interesting philosophy for the project."
+  details: "This was one of those many \"Game of War\" clones for mobile. I developed the client portion for managing friends & alliances, and the chat system for 1:1, alliance, and global scopes."
   tech: Unity, C#, Scala
 - name: "Draw Something 2<br>(Zynga)"
   image: ds2.webp
-  details: "I wish I could remember more about what I did from this game, it was likely a lot of social feed related features. It was definitely a fever dream development time for me and the result was an amazing Instagram-like experience for amateur and professional-level touch screen artwork. I got to work alongside lots of brilliant folks from the acquired New York studio (OMGPop) behind the original Draw Something. However, there was some wild internal drama where the head of the OMGPop crew was let go the night before we released the game. And then later when Zynga eventually closed down the OMGPop studio in New York, some of us were flown over to help with knowledge transfers. They treated us to expensive New York meals and bar drinks, and then expensed it on Zynga headquarters."
+  details: "I fondly remember the fever dream development of this game, and it was a blast. I worked on a lot of the Instagram-like social feed related features such as sharing, likes and comments."
   tech: Native Android, Native iOS, Cocos2d-x, C++
 - name: "Dream Zoo<br>(Zynga)"
   image: dz.jpg
