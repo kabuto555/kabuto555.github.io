@@ -36,7 +36,7 @@
 - name: "Chess with Friends<br>(Zynga)"
   image: cwf.png
   details: "Another mobile game I've spent a lot of time on, in particular numerous forgettable experimental growth and monetization features. Number go up, product team happy (business as usual? 🗿) It's been a long time since I worked on this game, but I fondly remember getting Universal Chess Interface (UCI) protocol implemented into the legacy game code to run UCI-compatible binaries for chess AI bots as processes and communicate with CLI like input/output."
-  tech: Native Android, Java, Native iOS, Objective-C, C/C++
+  tech: Native Android, Java, Native iOS, Objective-C, C/C++, Cocos2d-js
 - name: "Mafia Wars (Reboot)<br>(Zynga)"
   image: mwr.jpg
   details: "This was one of those many \"Game of War\" clones for mobile. I developed the client portion for managing friends & alliances, and the chat system for 1:1, alliance, and global scopes."
