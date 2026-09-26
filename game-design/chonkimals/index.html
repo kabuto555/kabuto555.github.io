@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Game Preview</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -769,6 +772,17 @@
       // The visible "Build N" badge is rendered by the WIM tool chrome
       // (GamePreview), not inside the game, so it never overlaps gameplay.
     })();
+  </script>
+  <script>
+    // Attempt to enter fullscreen on the first user interaction (Android/Desktop)
+    document.body.addEventListener('pointerup', function fs() {
+      var el = document.documentElement;
+      var rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+      if (rfs && !document.fullscreenElement && !document.webkitFullscreenElement) {
+        rfs.call(el).catch(function(e) { console.warn("Fullscreen prevented", e); });
+      }
+      document.body.removeEventListener('pointerup', fs);
+    });
   </script>
 </body>
 </html>
