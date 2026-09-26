@@ -8,6 +8,7 @@
     - "/assets/images/games/chonkimals_6.png"
   links: "[Play Game](/game-design/chonkimals/index.html)"
   hackathon: "Zynga 2026 Hackathon"
+  codesigner: "Co-Designer: [Joel Desjardin](https://joeldesjardins.com)"
   control: "Mobile control preferred"
   details: "A cozy, 3D social mmo-slop summer camp sandbox game. The concept is that everyone engages in activities together in realtime. Participate, spectate, or just chill and socialze! Roam the campgrounds at Camp Chonkton with other campers, ride the cliffside zipline and summit hang gliders, and compete in party minigames (Sumo, Dodgeball, River Log Race) or cooperative PvE events (Lunch Delivery) or tabletop classics (Words With Friends, Dice with Friends). Complete with mock Camp Pass progression, Camp Care Package gacha, and a fully featured cabin dressing room and tent customization."
   tech: "TypeScript, Three.js, Rapier Physics, WebGL, Web Audio API, AI-Assisted"
