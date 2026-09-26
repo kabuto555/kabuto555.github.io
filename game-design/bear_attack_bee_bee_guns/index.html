@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Game Preview</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #ffffff; }
-    /* Deliberately no safe-area padding. The canvas is full-bleed and
-       src/safe-layout.ts keeps game UI clear of the insets instead. Padding
-       here as well would reserve the notch twice, and it also broke Phaser's
-       Scale.FIT, which measures the padding-inclusive clientWidth/clientHeight
-       and then lays the canvas out respecting padding-top — pushing the bottom
-       of the canvas off-screen by the inset height. */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #111111; display: flex; justify-content: center; align-items: center; }
     #game {
       width: 100%;
       height: 100%;
+      background: #ffffff;
+    }
+    @media (min-aspect-ratio: 4/5) {
+      #game {
+        height: 100vh;
+        width: calc(100vh * (9 / 19.5));
+        max-width: 100vw;
+        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      }
     }
     .error {
       position: fixed;
