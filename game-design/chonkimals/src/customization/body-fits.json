@@ -1,0 +1,26 @@
+{
+  "_about": "Clothing fits per character body, in raw GLB (bind-pose) space: y up, +z = front. Authored from `node tools/measure_bodies.mjs <body>` silhouettes; re-check there after changing. tails: vertices behind zBelow within y are tail (clothes ignore them, the tail pokes through). top / bottom: the shirt's and shorts' height ranges. chest: where packs / sashes sit (straps find the arm sockets from the arm bones). verts: the GLB's vertex count — a mismatch means the model changed, so the fit is skipped (with a warning).",
+  "frog": {
+    "model": "assets/frog_wim.glb", "verts": 10609,
+    "top": [-0.2, 0.0], "bottom": [-0.31, -0.13],
+    "chest": -0.1
+  },
+  "kangaroo": {
+    "model": "assets/kangaroo_wim.glb", "verts": 10385,
+    "tails": [{ "zBelow": -0.2, "y": [0.0, 0.52] }],
+    "top": [0.44, 0.63], "bottom": [0.22, 0.5],
+    "chest": 0.54
+  },
+  "chicken": {
+    "model": "assets/chicken_wim.glb", "verts": 8217,
+    "tails": [{ "zBelow": -0.22, "y": [-0.5, 0.02] }],
+    "top": [-0.24, 0.05], "bottom": [-0.4, -0.18],
+    "chest": -0.1
+  },
+  "dog": {
+    "model": "assets/dog_wim.glb", "verts": 9746,
+    "tails": [{ "zBelow": -0.245, "y": [-0.75, -0.18] }],
+    "top": [-0.5, -0.06], "bottom": [-0.7, -0.42],
+    "chest": -0.26
+  }
+}

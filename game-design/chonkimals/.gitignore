@@ -1,0 +1,11 @@
+# Installed from package.json + package-lock.json — run `npm install`.
+node_modules/
+# Build output — run `npm run build` (the dev server serves dist/game.js).
+dist/
+# OS / editor clutter
+.DS_Store
+# Local logs and secrets
+*.log
+.env*
+# Upload bundle made by tools/make-upload-zip.sh
+camp-chonkimal-upload.zip

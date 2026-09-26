@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>html,body{margin:0;height:100%;overflow:hidden;background:#9fc4dc}
+    #hud{position:fixed;top:8px;left:8px;font:12px monospace;color:#fff;background:#0006;padding:6px 8px;border-radius:6px;white-space:pre}</style>
+</head>
+<body>
+  <div id="hud">loading…</div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    const q = new URLSearchParams(location.search);
+    const file = q.get('f') || 'assets/chunks/chunk_slope.glb';
+    const hud = document.getElementById('hud');
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.toneMapping = THREE.NeutralToneMapping ?? THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x9fc4dc);
+    const cam = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 5000);
+    const ctrl = new OrbitControls(cam, renderer.domElement);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x8fa0b0, 1.1));
+    const dir = new THREE.DirectionalLight(0xfff6ec, 2.0);
+    dir.position.set(40, 60, 25);
+    scene.add(dir);
+    // axes for orientation: red=+X, green=+Y, blue=+Z
+    scene.add(new THREE.AxesHelper(20));
+
+    new GLTFLoader().load(file, (g) => {
+      scene.add(g.scene);
+      const box = new THREE.Box3().setFromObject(g.scene);
+      const c = box.getCenter(new THREE.Vector3());
+      const s = box.getSize(new THREE.Vector3());
+      ctrl.target.copy(c);
+      cam.position.set(c.x + s.x * 0.9, c.y + s.y * 0.7, c.z + s.z * 1.5);
+      ctrl.update();
+      hud.textContent = `${file}\nsize  x:${s.x.toFixed(1)} y:${s.y.toFixed(1)} z:${s.z.toFixed(1)}\n` +
+        `min y:${box.min.y.toFixed(1)}  max y:${box.max.y.toFixed(1)}`;
+    }, undefined, (e) => { hud.textContent = 'ERROR: ' + e; });
+
+    addEventListener('resize', () => {
+      renderer.setSize(innerWidth, innerHeight);
+      cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix();
+    });
+    (function loop() { requestAnimationFrame(loop); ctrl.update(); renderer.render(scene, cam); })();
+  </script>
+</body>
+</html>
