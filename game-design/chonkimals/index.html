@@ -21,18 +21,26 @@
       src: url('assets/fredoka.woff2') format('woff2-variations'),
            url('assets/fredoka.woff2') format('woff2');
     }
-        html, body { width: 100%; height: 100%; overflow: hidden; background: #111111; display: flex; justify-content: center; align-items: center; }
-    #game {
+        html { width: 100%; height: 100%; overflow: hidden; background: #111111; display: flex; justify-content: center; align-items: center; }
+    body {
       width: 100%;
       height: 100%;
       background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0); /* makes body the containing block for position: fixed UI */
+    }
+    #game {
+      width: 100%;
+      height: 100%;
     }
     @media (min-aspect-ratio: 4/5) {
-      #game {
+      body {
         height: 100vh;
         width: calc(100vh * (9 / 19.5));
         max-width: 100vw;
         box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        flex: none;
       }
     }
       /* Default for all game UI. The debug panel sets its own font explicitly,
