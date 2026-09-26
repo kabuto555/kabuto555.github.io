@@ -1,3 +1,6 @@
 *.DS_Store
 clarky/.sass-cache
 _site
+node_modules/
+dist/*.map
+

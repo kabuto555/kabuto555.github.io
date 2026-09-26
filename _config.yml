@@ -11,3 +11,7 @@ kramdown:
 sass:
   sass_dir: _sass
   style: compressed
+exclude:
+  - node_modules
+  - "game-design/node_modules"
+

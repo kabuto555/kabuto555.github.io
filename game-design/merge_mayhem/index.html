@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Game Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #ffffff; }
+    /* Deliberately no safe-area padding. The canvas is full-bleed and
+       src/safe-layout.ts keeps game UI clear of the insets instead. Padding
+       here as well would reserve the notch twice, and it also broke Phaser's
+       Scale.FIT, which measures the padding-inclusive clientWidth/clientHeight
+       and then lays the canvas out respecting padding-top — pushing the bottom
+       of the canvas off-screen by the inset height. */
+    #game {
+      width: 100%;
+      height: 100%;
+    }
+    .error {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #2d1b1b;
+      border: 1px solid #ff4444;
+      color: #ff8888;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 80%;
+      font-family: monospace;
+    }
+    .error h3 { color: #ff4444; margin-bottom: 10px; }
+    .error pre { white-space: pre-wrap; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  
+  <!-- Three.js -->
+  <script>window.__WIM_ENGINE_READY__ = new Promise((resolve) => { window.__wimResolveEngineReady = resolve; });</script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    window.THREE = THREE;
+    window.__wimResolveEngineReady();
+  </script>
+
+  <!--
+    html-to-image (SVG foreignObject rasterizer) — lets screenshot capture include DOM UI
+    layered over the canvas. three.js has no in-scene UI renderer, so a 3D HUD is DOM, and a
+    canvas readback never sees it. Pinned; capture falls back to compositeHudOverlay() below
+    if this fails to load, so a CDN outage degrades fidelity rather than breaking capture.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+
+  <!-- Console log capture for debugging -->
+  <script>
+    window.__consoleLogs = [];
+    const __MAX_LOGS = 100;
+    const __originalConsole = {};
+    
+    ['log', 'warn', 'error', 'info', 'debug'].forEach(method => {
+      __originalConsole[method] = console[method];
+      console[method] = (...args) => {
+        window.__consoleLogs.push({
+          level: method,
+          message: args.map(a => {
+            try {
+              return typeof a === 'object' ? JSON.stringify(a) : String(a);
+            } catch { return String(a); }
+          }).join(' '),
+          timestamp: Date.now()
+        });
+        if (window.__consoleLogs.length > __MAX_LOGS) {
+          window.__consoleLogs.shift();
+        }
+        __originalConsole[method].apply(console, args);
+      };
+    });
+  </script>
+  
+  <!-- Error handling -->
+  <script>
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    window.onerror = function(msg, url, line, col, error) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error';
+      
+      const h3 = document.createElement('h3');
+      h3.textContent = 'Runtime Error';
+      errorDiv.appendChild(h3);
+      
+      const pre = document.createElement('pre');
+      pre.textContent = `${msg}\n\nLine ${line}, Column ${col}\n\n${error?.stack || ''}`;
+      errorDiv.appendChild(pre);
+      
+      const gameEl = document.getElementById('game');
+      gameEl.innerHTML = '';
+      gameEl.appendChild(errorDiv);
+      
+      // Notify parent window with proper origin
+      if (window.parent !== window) {
+        window.parent.postMessage({ type: 'game-error', error: { message: String(msg), line, col, stack: error?.stack } }, '*');
+      }
+      return true;
+    };
+  </script>
+  
+  <!-- Debug capture handlers -->
+  <script>
+    // Samples a small grid of pixels from `ctx` inside the (x, y, w, h) content
+    // region and returns true only if every sampled pixel is pure black. Used
+    // to catch a cleared/blank WebGL readback (see preserveDrawingBuffer note
+    // in src/main.ts) before it gets stored as a thumbnail.
+    function isBlankCapture(ctx, x, y, w, h) {
+      if (!(w > 0) || !(h > 0)) return true;
+      var cols = 3, rows = 3;
+      for (var row = 0; row < rows; row++) {
+        for (var col = 0; col < cols; col++) {
+          var sx = Math.min(Math.floor(x + (w * (col + 0.5)) / cols), x + w - 1);
+          var sy = Math.min(Math.floor(y + (h * (row + 0.5)) / rows), y + h - 1);
+          try {
+            var pixel = ctx.getImageData(sx, sy, 1, 1).data;
+            if (pixel[0] !== 0 || pixel[1] !== 0 || pixel[2] !== 0) return false;
+          } catch (e) {
+            // If sampling fails (e.g. tainted canvas), don't block the capture.
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    // This file is the index.html served for BOTH engines (game-server-workspace.ts
+    // always reads projects/templates/game/index.html and injects the engine-conditional
+    // blocks), so HUD compositing has to live here to run at all.
+    //
+    // three.js has no in-scene UI renderer, so any HUD (score, lives, timer, buttons) is a
+    // DOM overlay, and the canvas readback above never sees it. This walks the overlay and
+    // draws each element's background and own text onto `ctx`, mapping its on-screen rect
+    // into the destination rect the canvas content was just drawn into.
+    //
+    // The rules are structural, not conventional: anything visible that overlaps the canvas
+    // and is not one of the canvas's own ancestors counts. An earlier version required a
+    // <div>, inside #game, with computed position:absolute — which the 3D starter's own
+    // createOverlay() fails on all three counts (it appends to document.body, lays children
+    // out with flex so they compute to position:static, and uses a <button>). Keep this
+    // permissive: a HUD that renders on screen should appear in the capture.
+    //
+    // Phaser draws its UI inside the canvas, so this is normally a no-op for 2D.
+    function compositeHudOverlay(ctx, canvas, dx, dy, contentW, contentH) {
+      var canvasRect = canvas.getBoundingClientRect();
+      if (!(canvasRect.width > 0) || !(canvasRect.height > 0)) return;
+
+      var hScale = contentW / canvasRect.width;
+      var vScale = contentH / canvasRect.height;
+      var candidates = document.body ? document.body.querySelectorAll('*') : [];
+
+      ctx.save();
+      // Clip so a HUD element hanging outside the canvas can't smear across the letterbox.
+      ctx.beginPath();
+      ctx.rect(dx, dy, contentW, contentH);
+      ctx.clip();
+
+      for (var i = 0; i < candidates.length; i++) {
+        var hudEl = candidates[i];
+        var tag = hudEl.tagName;
+        if (tag === 'CANVAS' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'LINK') continue;
+        // Ancestors of the canvas (body, #game, any wrapper) are containers, not overlay
+        // content. Painting their background would cover the scene we just drew.
+        if (hudEl.contains(canvas)) continue;
+
+        var hudStyle = window.getComputedStyle(hudEl);
+        if (hudStyle.display === 'none' || hudStyle.visibility === 'hidden') continue;
+        var elOpacity = parseFloat(hudStyle.opacity || '1');
+        if (!(elOpacity > 0)) continue;
+
+        var hudRect = hudEl.getBoundingClientRect();
+        if (!(hudRect.width > 0) || !(hudRect.height > 0)) continue;
+        // Only content that actually overlays the canvas belongs in the capture.
+        if (hudRect.right <= canvasRect.left || hudRect.left >= canvasRect.right) continue;
+        if (hudRect.bottom <= canvasRect.top || hudRect.top >= canvasRect.bottom) continue;
+
+        var boxX = dx + (hudRect.left - canvasRect.left) * hScale;
+        var boxY = dy + (hudRect.top - canvasRect.top) * vScale;
+        var boxW = hudRect.width * hScale;
+        var boxH = hudRect.height * vScale;
+
+        ctx.globalAlpha = Math.min(1, elOpacity);
+
+        var bg = hudStyle.backgroundColor;
+        if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
+          var radius = Math.min(parseFloat(hudStyle.borderRadius) || 0, boxW / 2, boxH / 2);
+          ctx.fillStyle = bg;
+          if (radius > 0 && ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(boxX, boxY, boxW, boxH, radius);
+            ctx.fill();
+          } else {
+            ctx.fillRect(boxX, boxY, boxW, boxH);
+          }
+        }
+
+        // Only an element's own direct text nodes, so a wrapper doesn't redraw the text of
+        // every descendant — each descendant is walked separately by this same loop.
+        var hudText = '';
+        for (var n = 0; n < hudEl.childNodes.length; n++) {
+          var node = hudEl.childNodes[n];
+          if (node.nodeType === Node.TEXT_NODE) hudText += node.textContent;
+        }
+        hudText = hudText.replace(/\s+/g, ' ').trim();
+        if (hudText) {
+          var fontSizePx = parseFloat(hudStyle.fontSize) || 16;
+          var weight = hudStyle.fontWeight && hudStyle.fontWeight !== '400' ? hudStyle.fontWeight + ' ' : '';
+          ctx.font = weight + Math.max(1, fontSizePx * vScale) + 'px ' + (hudStyle.fontFamily || 'sans-serif');
+          ctx.fillStyle = hudStyle.color || '#ffffff';
+          ctx.textBaseline = 'middle';
+          // Flex/grid centering shrink-wraps the box to the text, so aligning inside the
+          // measured rect reproduces the on-screen position closely enough.
+          var align = hudStyle.textAlign;
+          if (align === 'center') {
+            ctx.textAlign = 'center';
+            ctx.fillText(hudText, boxX + boxW / 2, boxY + boxH / 2);
+          } else if (align === 'right' || align === 'end') {
+            ctx.textAlign = 'right';
+            ctx.fillText(hudText, boxX + boxW, boxY + boxH / 2);
+          } else {
+            ctx.textAlign = 'left';
+            ctx.fillText(hudText, boxX, boxY + boxH / 2);
+          }
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
+
+    // Rasterizes the DOM overlay with html-to-image (real CSS painting via SVG
+    // foreignObject) and draws it over the canvas capture. Returns false if the library is
+    // unavailable or fails, so the caller can fall back to compositeHudOverlay().
+    //
+    // The canvas is filtered out: we already drew it, and WebGL content does not survive
+    // foreignObject serialization. The background is forced transparent because the
+    // template stylesheet paints html/body #ffffff, which would otherwise cover the scene.
+    async function rasterizeOverlay(ctx, canvas, dx, dy, contentW, contentH) {
+      if (typeof htmlToImage === 'undefined' || !htmlToImage || !htmlToImage.toCanvas) return false;
+      var canvasRect = canvas.getBoundingClientRect();
+      if (!(canvasRect.width > 0) || !(canvasRect.height > 0)) return false;
+
+      var overlay = await htmlToImage.toCanvas(document.body, {
+        backgroundColor: 'transparent',
+        filter: function (node) { return node !== canvas; },
+        pixelRatio: 1,
+      });
+      if (!overlay || !(overlay.width > 0) || !(overlay.height > 0)) return false;
+
+      // html-to-image rasterizes document.body in CSS pixels; map the canvas's slice of that
+      // raster onto the same destination rect the canvas content was drawn into.
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(dx, dy, contentW, contentH);
+      ctx.clip();
+      ctx.drawImage(
+        overlay,
+        canvasRect.left, canvasRect.top, canvasRect.width, canvasRect.height,
+        dx, dy, contentW, contentH,
+      );
+      ctx.restore();
+      return true;
+    }
+
+    window.addEventListener('message', async function(event) {
+      // Only accept messages from the direct parent frame
+      if (event.source !== window.parent) return;
+
+      const data = event.data;
+      if (!data || !data.type) return;
+
+      // Shell-provided safe-area insets. One-way notification, so it is handled
+      // before the requestId guard below — there is no response to correlate.
+      //
+      // The builder preview sends this from its simulated-device picker. A
+      // desktop browser reports every env(safe-area-inset-*) as 0, so without
+      // this the preview's notch band is only paint: it would show UI sitting in
+      // the unsafe region with no way for the game to react. Published games in
+      // the Play app get real env() values and never receive this message.
+      //
+      // Consumed two ways, both taking the max with env() rather than replacing
+      // it (see src/safe-layout.ts): CSS via var(--sat, 0px) for DOM HUDs, and
+      // JS via getLiveShellInsets() for canvas coordinates.
+      if (data.type === 'simulated-insets') {
+        var root = document.documentElement;
+        var edges = { '--sat': 'top', '--sar': 'right', '--sab': 'bottom', '--sal': 'left' };
+        for (var prop in edges) {
+          var value = data.insets && data.insets[edges[prop]];
+          if (typeof value === 'number' && isFinite(value) && value > 0) {
+            root.style.setProperty(prop, value + 'px');
+          } else {
+            root.style.removeProperty(prop);
+          }
+        }
+        // Let layout code that samples on resize pick the new values up.
+        window.dispatchEvent(new Event('resize'));
+        return;
+      }
+
+      if (!data.requestId) return;
+
+      if (data.type === 'screenshot-request') {
+        let screenshot = null;
+        try {
+          const canvas = document.querySelector('canvas');
+          if (canvas) {
+            var isLandscape = canvas.width > canvas.height;
+            var longDim = Math.max(canvas.width, canvas.height);
+            var shortDim = Math.min(canvas.width, canvas.height);
+            var SCREENSHOT_LONG = 800;
+            var SCREENSHOT_SHORT = longDim > 0 ? Math.round(SCREENSHOT_LONG * shortDim / longDim) : SCREENSHOT_LONG;
+            var SCREENSHOT_W = isLandscape ? SCREENSHOT_LONG : SCREENSHOT_SHORT;
+            var SCREENSHOT_H = isLandscape ? SCREENSHOT_SHORT : SCREENSHOT_LONG;
+            const offscreen = document.createElement('canvas');
+            offscreen.width = SCREENSHOT_W;
+            offscreen.height = SCREENSHOT_H;
+            const ctx = offscreen.getContext('2d');
+            if (ctx) {
+              ctx.fillStyle = '#000';
+              ctx.fillRect(0, 0, SCREENSHOT_W, SCREENSHOT_H);
+              var scale = Math.min(SCREENSHOT_W / canvas.width, SCREENSHOT_H / canvas.height);
+              var dx = (SCREENSHOT_W - canvas.width * scale) / 2;
+              var dy = (SCREENSHOT_H - canvas.height * scale) / 2;
+              var contentW = canvas.width * scale;
+              var contentH = canvas.height * scale;
+              ctx.drawImage(canvas, dx, dy, contentW, contentH);
+              // Prefer real CSS painting; fall back to the hand-rolled compositor, which
+              // only knows solid backgrounds and single-line text, if that is unavailable.
+              var rasterized = false;
+              try {
+                rasterized = await rasterizeOverlay(ctx, canvas, dx, dy, contentW, contentH);
+              } catch (rasterErr) {
+                console.error('HUD overlay rasterize failed, falling back:', rasterErr);
+              }
+              if (!rasterized) {
+                try {
+                  compositeHudOverlay(ctx, canvas, dx, dy, contentW, contentH);
+                } catch (hudErr) {
+                  console.error('HUD overlay composite failed:', hudErr);
+                }
+              }
+              // WebGL renderers (three.js) can hand back a cleared/blank drawing
+              // buffer if preserveDrawingBuffer isn't set on the renderer, which
+              // would otherwise be stored silently as a valid-but-black
+              // thumbnail. Sample a small grid of pixels inside the drawn
+              // content region (not the letterbox fill, which is intentionally
+              // black) and only accept the capture if at least one sampled
+              // pixel isn't pure black.
+              if (isBlankCapture(ctx, dx, dy, contentW, contentH)) {
+                screenshot = null;
+              } else {
+                screenshot = offscreen.toDataURL('image/png');
+                if (screenshot === 'data:,') screenshot = null;
+              }
+            }
+          }
+        } catch (e) {
+          console.error('Screenshot capture failed:', e);
+        }
+        window.parent.postMessage({ type: 'screenshot-response', requestId: data.requestId, screenshot }, event.origin);
+      }
+      
+      if (data.type === 'console-request') {
+        window.parent.postMessage({ type: 'console-response', requestId: data.requestId, logs: window.__consoleLogs || [] }, event.origin);
+      }
+      
+      if (data.type === 'state-request') {
+        // skills/debug/README.md documents getGameState() as the hook a game defines, so read
+        // that first; __gameState stays supported for games that assign the object directly.
+        var gameState = null;
+        try {
+          gameState = (typeof window.getGameState === 'function' ? window.getGameState() : window.__gameState) || null;
+        } catch (err) {
+          gameState = { getGameStateError: String(err) };
+        }
+        window.parent.postMessage({ type: 'state-response', requestId: data.requestId, state: gameState }, event.origin);
+      }
+    });
+  </script>
+  
+  <!-- Game code - loaded dynamically to support session-scoped URLs -->
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      // v = content hash (cache-bust token, changes iff game code changes).
+      // b = build number (display only). Kept separate so a server restart that
+      // resets the counter can't reuse a cache key that iOS already cached.
+      var cacheBust = params.get('v') || '';
+      var buildNum = Number(params.get('b')) || 0;
+      window.__WIM_BUILD__ = buildNum;
+      var src = 'dist/game.js';
+      var qs = [];
+      if (params.get('session')) qs.push('session=' + encodeURIComponent(params.get('session')));
+      if (cacheBust) qs.push('v=' + encodeURIComponent(cacheBust));
+      if (qs.length) src += '?' + qs.join('&');
+      function loadGame() {
+        var s = document.createElement('script');
+        s.src = src;
+        document.body.appendChild(s);
+      }
+      // window.__WIM_ENGINE_READY__ (set by the engine CDN block above) resolves
+      // once the game's engine global (e.g. window.THREE) is actually available —
+      // dynamically-inserted scripts default to async and can otherwise run
+      // before a deferred CDN module script has finished.
+      var engineReady = window.__WIM_ENGINE_READY__;
+      if (engineReady && typeof engineReady.then === 'function') {
+        engineReady.then(loadGame);
+      } else {
+        loadGame();
+      }
+      // Build number is exposed via window.__WIM_BUILD__ for debugging only.
+      // The visible "Build N" badge is rendered by the WIM tool chrome
+      // (GamePreview), not inside the game, so it never overlaps gameplay.
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "game-design-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:all": "for dir in */ ; do [ -f \"$dir/package.json\" ] && echo \"Building $dir...\" && (cd \"$dir\" && ../node_modules/.bin/tsc && ../node_modules/.bin/vite build) ; done"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0",
+    "three": "^0.170.0",
+    "@dimforge/rapier3d-compat": "^0.20.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "@types/three": "^0.170.0"
+  }
+}
