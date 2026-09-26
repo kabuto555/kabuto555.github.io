@@ -1,4 +1,4 @@
-- name: "Camp Chonkimal"
+- name: "Chonkimals"
   screenshots:
     - "/assets/images/games/chonkimals_1.png"
     - "/assets/images/games/chonkimals_2.png"
@@ -28,7 +28,7 @@
   links: "[Play Game](/game-design/tinder_with_trains/index.html)"
   details: "(More of a toy than a game) Become the poor soul making moral dilemma decisions in the classic Trolley Problem under limited time pressure. Make split-second decisions on who lives and dies by a train and watch your Karma meter fluctuate!"
   tech: "TypeScript, Phaser 3, Web Audio API, AI-Assisted"
-- name: "Munchy Monkey"
+- name: "Munchy Monkey: Munch-3 Puzzle"
   screenshots:
     - "/assets/images/games/munchy_monkey_1.png"
     - "/assets/images/games/munchy_monkey_2.png"
@@ -44,7 +44,7 @@
   links: "[Play Game](/game-design/dog_ramen/index.html)"
   details: "A goofy puzzle game where you play as a doge filling in for the absent shop owner at a ramen restaurant. Navigate grid-based broth pots to step on and sink dry instant ramen noodles into hot soup, using efficient grid routes from the stage start to finish tiles."
   tech: "TypeScript, Phaser 3, Procedural Graphics, Web Audio API, AI-Assisted"
-- name: "Monkey Suit Banandam: Space Defender"
+- name: "Monkey Suit Banandam"
   screenshots:
     - "/assets/images/games/monkey_suit_banandam_1.png"
     - "/assets/images/games/monkey_suit_banandam_2.png"
@@ -71,7 +71,7 @@
   control: "Desktop control only"
   details: "A modular starship builder and top-down space shoot 'em up. Drag, snap, and rotate ship parts, wings, and special weapons (plasma guns, beam lasers, tracking missiles, and defense funnels) onto a design grid before deploying against enemy battleships!"
   tech: "TypeScript, Phaser 3, Web Audio API, Canvas Graphics, AI-Assisted"
-- name: "Bomber Goose (Bomber G-0053)"
+- name: "Bomber Goose"
   screenshots:
     - "/assets/images/games/bomber_goose_1.png"
     - "/assets/images/games/bomber_goose_2.png"
