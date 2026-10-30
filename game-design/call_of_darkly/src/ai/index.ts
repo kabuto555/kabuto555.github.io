@@ -1,0 +1,20 @@
+import { BLACK_KNIGHT } from './blackKnight';
+import { registerArchetype } from './spawner';
+export * from './types';
+export * from './fsm';
+export * from './logic';
+export * from './nav';
+export * from './perception';
+export * from './enemy';
+export * from './states';
+export * from './spawner';
+export * from './hollow';
+export * from './system';
+export * from './soldier';
+export * from './hazards';
+export * from './firebomb';
+export * from './crossbow';
+export * from './barrel';
+export * from './blackKnight';
+registerArchetype(BLACK_KNIGHT);
+export * from './mimic'; // self-registers the 'mimic' archetype

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:all": "for dir in */ ; do [ -f \"$dir/package.json\" ] && echo \"Building $dir...\" && (cd \"$dir\" && ../node_modules/.bin/tsc && ../node_modules/.bin/vite build) ; done"
+    "build:all": "for dir in */ ; do [ \"$dir\" = call_of_darkly/ ] && continue; [ -f \"$dir/package.json\" ] && echo \"Building $dir...\" && (cd \"$dir\" && ../node_modules/.bin/tsc && ../node_modules/.bin/vite build) ; done"
   },
   "dependencies": {
     "phaser": "^3.90.0",

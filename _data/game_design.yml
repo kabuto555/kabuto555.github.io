@@ -1,3 +1,13 @@
+- name: "Call of Darkly: Miyazaki Warfare"
+  screenshots:
+    - "/assets/images/games/call_of_darkly_1.png"
+    - "/assets/images/games/call_of_darkly_2.png"
+    - "/assets/images/games/call_of_darkly_3.png"
+    - "/assets/images/games/call_of_darkly_4.png"
+  links: "[Play Game](/game-design/call_of_darkly/dist/index.html)"
+  control: "Desktop only: keyboard + mouse"
+  details: "A goofy PS1-style FPS mashup: a modern military operator drops into a grim, Souls-like dark fantasy world. Hitscan gunplay with ADS, reloads and loot drops meets bonfires, estus, stamina-gated dodge rolls and souls lost on death. Fight from the shrine through the undead-infested burg up to a towering demon boss, all rendered with low-res, vertex-snapped, dithered PS1 visuals."
+  tech: "TypeScript, Three.js, WebGL (custom PS1 render pipeline), Web Audio API, Vite, AI-Assisted"
 - name: "Chonkimals"
   screenshots:
     - "/assets/images/games/chonkimals_1.png"
