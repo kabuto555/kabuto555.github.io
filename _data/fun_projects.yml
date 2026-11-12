@@ -1,4 +1,5 @@
 - name: "Chipmunk 🐿<br>(2026)"
+  id: chipmunk
   image: chipmunk.jpg
   details: "A silly desktop app that wraps the Spotify Web Player and makes every song sound like it's sung by chipmunks. It speeds tracks up to 2x with pitch preservation turned off, and there's a little floating control pill with presets (Nightcore, Chipmunk, Helium, Octave). There's also a pixel-art chipmunk crew that dances to the music, throws seeds and nuts, and plays some sports. (Driven by a beat detector that analyzes the audio as it plays.) 🐿"
   tech: Electron (castLabs Widevine), JavaScript, Web Audio API, Canvas
@@ -17,6 +18,8 @@
       url: "https://drive.google.com/file/d/1uhd_w7NbTYO7ADQx05PwWS9loXjKbOF8/view"
   download_note: "v0.1.0 - Log in with your Spotify account. Then allow any audio permissions you get asked for, I swear I'm only up to good, no badness here. The apps aren't code-signed, so macOS may say it can't be opened: allow opening the app from \"System Settings > Privacy & Security\". On Windows, my Windows-using friends tell me to click \"More info > Run anyway\" on the popup."
 - name: "instant ramen 🍜<br>(2026)"
+  id: instant-ramen
+  links: "[instantramen.studio](https://instantramen.studio)"
   image: instant_ramen.webp
   details: "Describe some music in plain words and get a multi-track song back that you can play, edit in a piano roll, and keep tweaking with more prompts. Under the hood, the AI plans out the song sections, writes reusable patterns and motifs, and picks from suitable virtual instruments (sampled, synths and drum machines) with effects and automation. There's also a Critique button where a deliberately harsh AI reviewer scores your song out of 10 and tells you what to fix. You can export to MIDI (and then import into your DAW), a mastered WAV/MP3 that's loudness-matched for streaming, or stems for a DAW, game engine, or video editor."
   tech: TypeScript, React, Vite, Web Audio API, Node.js, Express, Electron, Cloudflare Pages, Supabase, LLM APIs

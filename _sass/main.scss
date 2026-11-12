@@ -202,3 +202,17 @@ code {
   color: #aaa;
   margin-bottom: 10px;
 }
+
+/* --- Linkable entry headings --- */
+li h2 {
+  scroll-margin-top: 30px;
+}
+
+li h2 a {
+  color: inherit;
+}
+
+li:has(h2:target) {
+  border-color: var(--alt-color);
+  box-shadow: 0 0 12px var(--alt-color);
+}
