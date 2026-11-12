@@ -24,7 +24,7 @@ title: Game Design
 
 # 🎮 Game Design 🎮
 
-These are my game design prototypes! Most of these games are playable on web mobile or desktop!
+These are my game design prototypes from my strange shower thoughts and my bad dreams! (Or are they?) Most of these games are playable on web mobile or desktop!
 
 {% for game in site.data.game_design %}
 - ## {{ game.name }}

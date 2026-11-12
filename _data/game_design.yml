@@ -6,7 +6,7 @@
     - "/assets/images/games/call_of_darkly_4.png"
   links: "[Play Game](/game-design/call_of_darkly/dist/index.html)"
   control: "Desktop only: keyboard + mouse"
-  details: "A goofy PS1-style FPS mashup: a modern military operator drops into a grim, Souls-like dark fantasy world. Hitscan gunplay with ADS, reloads and loot drops meets bonfires, estus, stamina-gated dodge rolls and souls lost on death. Fight from the shrine through the undead-infested burg up to a towering demon boss, all rendered with low-res, vertex-snapped, dithered PS1 visuals."
+  details: "An experimental PS1-style FPS mashup where a modern military operator gets dropped into a grim, Souls-like dark fantasy world. You get guns with aiming down sights, reloads and loot drops, but also bonfires, estus, stamina-based dodge rolls, and losing your souls when you die. Fight your way from the shrine through the undead-infested burg up to a giant demon boss. It uses a custom render pipeline to get that low-res, wobbly, dithered PS1 look."
   tech: "TypeScript, Three.js, WebGL (custom PS1 render pipeline), Web Audio API, Vite, AI-Assisted"
 - name: "Chonkimals"
   screenshots:
@@ -20,7 +20,7 @@
   hackathon: "Zynga 2026 Hackathon"
   codesigner: "Co-Designer: [Joel Desjardin](https://joeldesjardins.com)"
   control: "Mobile control preferred"
-  details: "A cozy, 3D social mmo-slop summer camp sandbox game. The concept is that everyone engages in activities together in realtime. Participate, spectate, or just chill and socialze! Roam the campgrounds at Camp Chonkton with other campers, ride the cliffside zipline and summit hang gliders, and compete in party minigames (Sumo, Dodgeball, River Log Race) or cooperative PvE events (Lunch Delivery) or tabletop classics (Words With Friends, Dice with Friends). Complete with mock Camp Pass progression, Camp Care Package gacha, and a fully featured cabin dressing room and tent customization."
+  details: "A cozy 3D social mmo-slop summer camp sandbox game. The idea is that everyone does activities together in realtime, and you can join in, spectate, or just chill and socialize. Roam around Camp Chonkton with other campers, ride the cliffside zipline and hang glide off the summit. There are party minigames (Sumo, Dodgeball, River Log Race), co-op events (Lunch Delivery), and tabletop classics (Words With Friends, Dice with Friends). We also threw in a mock Camp Pass, Camp Care Package gacha, and a cabin dressing room with tent customization. (Because what's a summer camp without a battle pass? 🗿)"
   tech: "TypeScript, Three.js, Rapier Physics, WebGL, Web Audio API, AI-Assisted"
 - name: "Super Turd Busters"
   screenshots:
@@ -28,7 +28,7 @@
     - "/assets/images/games/super_turd_busters_2.png"
     - "/assets/images/games/super_turd_busters_3.png"
   links: "[Play Game](/game-design/super_turd_busters/index.html)"
-  details: "An retro arcade puzzle game starring a master plumber and bad English translation. Control your plumbing snake auger to bust stubborn turds and unclog the toilet across procedurally generated sewage stages."
+  details: "A retro arcade puzzle game starring a master plumber, complete with bad English translation. You control a plumbing snake auger to bust stubborn turds and unclog the toilet across procedurally generated sewage stages. Yes, it's exactly what it sounds like."
   tech: "TypeScript, Phaser 3, Chiptune Audio Synthesis, Procedural Grids, AI-Assisted"
 - name: "Tinder with Trains"
   screenshots:
@@ -36,7 +36,7 @@
     - "/assets/images/games/tinder_with_trains_2.png"
     - "/assets/images/games/tinder_with_trains_3.png"
   links: "[Play Game](/game-design/tinder_with_trains/index.html)"
-  details: "(More of a toy than a game) Become the poor soul making moral dilemma decisions in the classic Trolley Problem under limited time pressure. Make split-second decisions on who lives and dies by a train and watch your Karma meter fluctuate!"
+  details: "(More of a toy than a game.) You're the poor soul stuck making the classic Trolley Problem decision, except under time pressure, over and over. Make split-second calls on who lives and who gets hit by the train, and watch your Karma meter swing around!"
   tech: "TypeScript, Phaser 3, Web Audio API, AI-Assisted"
 - name: "Munchy Monkey: Munch-3 Puzzle"
   screenshots:
@@ -44,7 +44,7 @@
     - "/assets/images/games/munchy_monkey_2.png"
     - "/assets/images/games/munchy_monkey_3.png"
   links: "[Play Game](/game-design/munchy_monkey/index.html)"
-  details: "A vibrant 3D fruit-munching puzzle game in a hybrid casual style. Munch through tropical fruits made of emoji gaussian splats on each stage by selecting an emoji type to munch the matching emoji directly before you and eating your way through the fruit to find all 3 stars. Has mock monetization to simulate a hybrid casual experience."
+  details: "A colorful 3D fruit-munching puzzle game in a hybrid casual style. Each stage is a tropical fruit made of emoji gaussian splats. Pick an emoji type to munch the matching emoji right in front of you, and eat your way through the fruit to find all 3 stars. I added mock monetization too, to get the full hybrid casual experience."
   tech: "TypeScript, Three.js, WebGL, Web Audio Analyser, AI-Assisted"
 - name: "Dog Ramen"
   screenshots:
@@ -52,7 +52,7 @@
     - "/assets/images/games/dog_ramen_2.png"
     - "/assets/images/games/dog_ramen_3.png"
   links: "[Play Game](/game-design/dog_ramen/index.html)"
-  details: "A goofy puzzle game where you play as a doge filling in for the absent shop owner at a ramen restaurant. Navigate grid-based broth pots to step on and sink dry instant ramen noodles into hot soup, using efficient grid routes from the stage start to finish tiles."
+  details: "A goofy puzzle game where you play as a doge filling in for the missing owner of a ramen shop. Walk across the grid of broth pots, stepping on dry instant ramen noodles to sink them into the hot soup, and find an efficient route from the start tile to the finish. (Did I mention I love noodles?)"
   tech: "TypeScript, Phaser 3, Procedural Graphics, Web Audio API, AI-Assisted"
 - name: "Monkey Suit Banandam"
   screenshots:
@@ -60,7 +60,7 @@
     - "/assets/images/games/monkey_suit_banandam_2.png"
     - "/assets/images/games/monkey_suit_banandam_3.png"
   links: "[Play Game](/game-design/monkey_suit_banandam/index.html)"
-  details: "A space ape 3D space rail action runner. I just really wanted to make a monkey in space game. Pilot a monkey in an experimental mech suit through procedurally generated rails stages seamlessly linked together, blasting monkey predator enemies various space weapons, and surviving boss battles."
+  details: "A 3D space rail shooter starring a space ape. I just really wanted to make a monkey in space game. Pilot a monkey in an experimental mech suit through procedurally generated rail stages that link together seamlessly, blast monkey predator enemies with various space weapons, and survive the boss battles."
   tech: "TypeScript, Three.js, WebGL, Tone.js, Web Audio API, AI-Assisted"
 - name: "Bear Attack: Bee Bee Guns"
   screenshots:
@@ -70,7 +70,7 @@
     - "/assets/images/games/bear_attack_bee_bee_guns_4.png"
   links: "[Play Game](/game-design/bear_attack_bee_bee_guns/index.html)"
   control: "Desktop control only"
-  details: "A short arcade action arena game with a novel beehive weapon. Fight back against corporate pollution and tokenmaxxing tech moguls. Command an armed bear wielding beehive guns, rescue caged forest critters, and take on the creepy Jeffelon Zuckerbezaltman boss fight in the final stage."
+  details: "A short arcade arena action game where your weapon is a beehive. Fight back against corporate pollution and tokenmaxxing tech moguls as an armed bear with beehive guns, rescue caged forest critters, and take on the creepy Jeffelon Zuckerbezaltman in the final boss fight."
   tech: "TypeScript, Phaser 3, Arcade Physics, Web Audio API, AI-Assisted"
 - name: "Battlewing Architect"
   screenshots:
@@ -79,20 +79,20 @@
     - "/assets/images/games/battlewing_architect_3.png"
   links: "[Play Game](/game-design/battlewing_architect/index.html)"
   control: "Desktop control only"
-  details: "A modular starship builder and top-down space shoot 'em up. Drag, snap, and rotate ship parts, wings, and special weapons (plasma guns, beam lasers, tracking missiles, and defense funnels) onto a design grid before deploying against enemy battleships!"
+  details: "A modular starship builder plus a top-down space shoot 'em up. Drag, snap and rotate ship parts, wings and special weapons (plasma guns, beam lasers, tracking missiles and defense funnels) onto a design grid, then take your ship out against enemy battleships!"
   tech: "TypeScript, Phaser 3, Web Audio API, Canvas Graphics, AI-Assisted"
 - name: "Bomber Goose"
   screenshots:
     - "/assets/images/games/bomber_goose_1.png"
     - "/assets/images/games/bomber_goose_2.png"
   links: "[Play Game](/game-design/bomber_goose/index.html)"
-  details: "An arcade puzzle game where the goose is loose! Patrol the Toronto skyline, dropping strategic poopy payloads onto descending construction grid blocks to trigger explosive chain reactions, rack up combo multipliers, and thwart the aggressive development crew before the grid fills up."
+  details: "An arcade puzzle game where the goose is loose! Fly over the Toronto skyline and drop strategic poopy payloads onto the construction blocks coming down, setting off chain reactions and combo multipliers to stop the aggressive development crew before the grid fills up. (Any Torontonian knows the geese run this city.)"
   tech: "TypeScript, Phaser 3, Web Audio API, AI-Assisted"
 - name: "Merge Mayhem"
   screenshots:
     - "/assets/images/games/merge_mayhem_1.png"
     - "/assets/images/games/merge_mayhem_2.png"
   links: "[Play Game](/game-design/merge_mayhem/index.html)"
-  details: "A block puzzle game with slide-and-merge mechanics. Swipe or drag numbered blocks across a grid to merge matching ranks. Reach a target block level per stage to clear that color and manage grid capacity, and advance through increasingly difficult stages."
+  details: "A block puzzle game with slide-and-merge mechanics. Swipe or drag numbered blocks across the grid to merge matching ranks. Reach the target block level in each stage to clear that color, keep an eye on how full the grid is getting, and work your way through harder and harder stages."
   tech: "TypeScript, Three.js, WebGL, AI-Assisted"
 

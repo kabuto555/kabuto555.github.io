@@ -1,7 +1,9 @@
 - name: 🏠 Home
   link: /
-- name: 👾 Projects
+- name: 👾 Game/Work Projects
   link: /pages/projects.html
+- name: 🎉 Fun Projects
+  link: /pages/fun-projects.html
 - name: 🎮 Game Design
   link: /pages/game-design.html
 - name: 🍜 About

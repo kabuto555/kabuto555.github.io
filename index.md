@@ -10,7 +10,7 @@ title: Clarky Lee
 
 <p align=center>🎮 Crafting joyful player experiences with code and design. 🕹️</p>
 
-_I'm a software and game developer with a passion for building intuitive and enjoyable experiences. I specialize in mobile applications and Unity and Godot games, but also have experience in web frontend and backend systems. Whether it's RPG mechanics, card battle systems, or data-heavy features, I enjoy solving interesting design and technical problems and delivering responsive experiences._
+_I'm a software and game developer with a passion for building intuitive and enjoyable experiences, and then juicing the hell outta them. I specialize in Unity and mobile games, but also have experience in mobile apps, web frontend and backend systems. Whether it's RPG mechanics, card battle systems, juicing and polishing gameplay or UI, or data-heavy features, I enjoy solving interesting design and technical problems and delivering responsive experiences._
 
 <br>
 

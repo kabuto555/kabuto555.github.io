@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Projects
+title: Game/Work Projects
 ---
-# 👾 Projects 👾
+# 👾 Game/Work Projects 👾
 
 Here are my current and past projects!
 
